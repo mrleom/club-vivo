@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const ACCESS_COOKIE = "sic_access_token";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const hasSessionCookie = Boolean(request.cookies.get(ACCESS_COOKIE)?.value);
 
   if (hasSessionCookie) {
