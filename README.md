@@ -49,6 +49,14 @@ At a high level:
 
 The public repo shows the web app. Private backend values stay outside the repo.
 
+## Club Vivo Web App Architecture
+
+Club Vivo is the coach-facing Next.js app. Coaches enter through the landing page, sign in through Cognito, land on the Home page, and work inside the Coach Workspace.
+
+The main product wedge is Session Builder. It turns coach input into a generation request and returns a coach-ready session that can be saved, exported, and improved with feedback.
+
+![Club Vivo Web App Architecture](docs/architecture/club-vivo.drawio.png)
+
 ## Club Vivo and SIC
 
 Club Vivo is the coach-facing web app.
@@ -92,3 +100,4 @@ Developers can use `.env.example` as a blank local template when needed. Amplify
 ```bash
 npm ci
 npm run dev
+```
