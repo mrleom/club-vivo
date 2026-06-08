@@ -55,7 +55,9 @@ Club Vivo is the coach-facing web app.
 
 Sports Intelligence Cloud, SIC, is the tenant-safe SaaS platform behind it.
 
-Club Vivo stays simple on the surface, while SIC handles authentication, protected API access, tenant context, data boundaries, exports, and operations.
+Club Vivo stays simple on the surface, while SIC handles authentication, protected API access, tenant context, data boundaries, exports, observability, and infrastructure.
+
+![SIC Backend Platform for Club Vivo](docs/architecture/sic-backend-platform.png)
 
 In practice:
 
@@ -63,7 +65,7 @@ In practice:
 - Club Vivo uses **Cognito Hosted UI** login through private backend configuration.
 - Club Vivo stores session tokens in **HttpOnly cookies**.
 - Club Vivo calls the protected SIC API with **bearer tokens**.
-- SIC handles tenant-safe backend behavior.
+- SIC verifies identity, resolves tenant context, checks entitlements, and allows tenant-scoped data access.
 - Private backend values stay outside this repo.
 
 Architecture docs:
@@ -90,4 +92,3 @@ Developers can use `.env.example` as a blank local template when needed. Amplify
 ```bash
 npm ci
 npm run dev
-```
