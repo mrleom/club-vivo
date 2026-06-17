@@ -79,7 +79,7 @@ function QuickReviewCandidateCard({
             href={editHref}
             className="inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-white"
           >
-            Edit
+            Revise prompt
           </Link>
           <form action={saveFormAction}>
             <input type="hidden" name="candidate" value={JSON.stringify(candidate)} />

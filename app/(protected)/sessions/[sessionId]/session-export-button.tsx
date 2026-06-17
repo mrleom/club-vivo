@@ -49,7 +49,7 @@ export function SessionExportButton({
         </p>
       ) : (
         <p className="max-w-xs text-sm leading-6 text-slate-600">
-          Download the field-plan handout for this saved session.
+          Download the coach handout for this saved session.
         </p>
       )}
     </div>

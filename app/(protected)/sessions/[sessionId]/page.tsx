@@ -118,7 +118,23 @@ function buildSessionFlowSummary(activities: SessionDetail["activities"]) {
     .map((activity) => activity.name.replace(/\s+/g, " ").trim())
     .filter(Boolean);
 
-  return steps.length > 0 ? steps.join(" -> ") : "No saved session flow available.";
+  if (steps.length === 0) {
+    return "No saved session flow available.";
+  }
+
+  if (steps.length === 1) {
+    return `Start with ${steps[0]}.`;
+  }
+
+  if (steps.length === 2) {
+    return `Start with ${steps[0]}, then finish with ${steps[1]}.`;
+  }
+
+  const middleSteps = steps.slice(1, -1).join(", then move into ");
+
+  return `Start with ${steps[0]}, then move into ${middleSteps}, then finish with ${
+    steps[steps.length - 1]
+  }.`;
 }
 
 function buildFieldPlanTitle({
@@ -228,8 +244,8 @@ function DiagramLegendCard() {
           symbol={<PlayerLegendSymbol fill="#94a3b8" />}
           label="Gray player = neutral / free player"
         />
-        <DiagramLegendItem symbol={<BallLegendSymbol />} label="Ball = ball" />
-        <DiagramLegendItem symbol={<ConeLegendSymbol />} label="Yellow circle = cone / equipment" />
+        <DiagramLegendItem symbol={<BallLegendSymbol />} label="Ball" />
+        <DiagramLegendItem symbol={<ConeLegendSymbol />} label="Cone or equipment marker" />
         <DiagramLegendItem
           symbol={<LineLegendSymbol />}
           label="Solid line = pass / shot / ball action"

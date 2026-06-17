@@ -61,7 +61,7 @@ export function SessionFeedbackPanel({
       <h2 className="text-lg font-semibold text-slate-900">Coach feedback after field test</h2>
       <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
         Run the session with your team first, then record one field-test note for what worked,
-        what needs adjustment, and what should shape future session generation.
+        what needs adjustment, and what should improve next time.
       </p>
       <p className="mt-2 text-xs leading-5 text-slate-500">
         One feedback submission is saved per session.
@@ -132,7 +132,7 @@ export function SessionFeedbackPanel({
           </label>
 
           <label className="grid gap-2 text-sm text-slate-700">
-            <span className="font-medium">What should improve in the next generated plan?</span>
+            <span className="font-medium">What should improve next time?</span>
             <textarea
               name="missingFeatures"
               defaultValue={state.values.missingFeatures}
