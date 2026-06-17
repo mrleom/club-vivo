@@ -5,7 +5,6 @@ import { CoachPageHeader } from "../../../../components/coach/CoachPageHeader";
 import { getCurrentUser } from "../../../../lib/get-current-user";
 import { parseQuickSessionPayload, QUICK_SESSION_COOKIE } from "../../../../lib/quick-session-payload";
 import { getWorkspaceCookieName } from "../../../../lib/workspace-local-cookies";
-import { saveGeneratedSessionAction } from "../session-actions";
 import { QuickSessionReview } from "./quick-session-review";
 
 function buildQuickEditHref(notes?: string) {
@@ -36,14 +35,13 @@ export default async function QuickReviewPage() {
     <div className="grid gap-6">
       <CoachPageHeader
         title="Review Quick Soccer Game"
-        description="Check the game idea, then save it when it is ready for your session library."
+        description="Check the game idea, then use it on the field or revise the prompt."
       />
 
       <QuickSessionReview
         pack={quickSessionPayload.pack}
         prompt={quickSessionPayload.notes || ""}
         editHref={editHref}
-        saveAction={saveGeneratedSessionAction}
       />
     </div>
   );
