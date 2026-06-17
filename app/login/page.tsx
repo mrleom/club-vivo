@@ -16,17 +16,17 @@ export default async function LoginPage({
     <main className="flex min-h-screen items-center justify-center px-6 py-16">
       <section className="club-vivo-shell w-full max-w-2xl rounded-[2rem] border p-8 backdrop-blur">
         <div className="club-vivo-badge mb-6 inline-flex rounded-full px-3 py-1 text-sm font-medium tracking-wide uppercase">
-          SIC / Club Vivo
+          Club Vivo
         </div>
 
         <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-          Open the coach workspace
+          Sign in to Club Vivo
         </h1>
 
         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-700">
           {isLoggedOut
-            ? "You signed out of the coach workspace. Sign back in or start access again to continue planning."
-            : "Sign in or start access to enter the current Club Vivo coach workspace through the hosted auth flow."}
+            ? "You signed out. Sign back in to continue planning."
+            : "Access your coach workspace to build sessions, manage team context, and review saved plans."}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -43,17 +43,16 @@ export default async function LoginPage({
             prefetch={false}
             className="inline-flex rounded-full border border-slate-300 bg-white/80 px-5 py-3 text-sm font-medium text-slate-700 transition hover:bg-white"
           >
-            Start access
+            Create account
           </Link>
         </div>
 
         <p className="mt-6 max-w-xl text-sm leading-6 text-slate-600">
-          Sign in opens the current hosted auth flow. Starting access uses the same path and lands
-          in the same coach workspace after auth completes.
+          New coaches can create an account and enter the same workspace after access is approved.
         </p>
 
         <p className="mt-4 max-w-xl text-sm leading-6 text-slate-600">
-          If you expected access but cannot continue, contact your Club Vivo pilot operator.
+          If you need help accessing your workspace, contact your Club Vivo administrator.
         </p>
       </section>
     </main>
