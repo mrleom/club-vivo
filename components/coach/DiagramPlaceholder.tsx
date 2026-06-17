@@ -144,10 +144,6 @@ function inferDiagramKind(activity: DiagramActivity | undefined, activityIndex: 
     return "compact_recovery_transition";
   }
 
-  if (activityIndex === 0) {
-    return "activation_chase_or_reaction";
-  }
-
   const isReactionChase =
     /reaction|trigger|chase|escape|safe tag|tagging|receiver/.test(text) &&
     /gate|first touch|scan|pressure|support|counter/.test(text);
@@ -166,6 +162,10 @@ function inferDiagramKind(activity: DiagramActivity | undefined, activityIndex: 
 
   if (/attacking overload|overload|free player|wide support|wide channel|wide play|pass or dribble|numbers up|extra player|create chances|combination play/.test(text)) {
     return "attacking_overload";
+  }
+
+  if (activityIndex === 0) {
+    return "activation_chase_or_reaction";
   }
 
   if (/mini goal|mini goals/.test(text) && /possession|target|directional|pressure/.test(text)) {
@@ -306,12 +306,12 @@ function buildAttackingOverloadPanels(activityIndex: number): DiagramPanel[] {
           { type: "zone", x: 96, y: 17, width: 2, height: 70, tone: "recovery" },
           { type: "gate", x: 141, y: 40, rotate: 90 },
           { type: "gate", x: 22, y: 70, rotate: 90 },
-          { type: "player", role: "coached", x: 56, y: 53 },
+          { type: "player", role: "coached", x: 55, y: 49 },
           { type: "player", role: "coached", x: 75, y: 74 },
           { type: "player", role: "neutral", x: 122, y: 40 },
           { type: "player", role: "opposition", x: 84, y: 51 },
           { type: "player", role: "opposition", x: 103, y: 69 },
-          { type: "ball", x: 66, y: 56 }
+          { type: "ball", x: 63, y: 58 }
         ]
       },
       {
@@ -324,14 +324,14 @@ function buildAttackingOverloadPanels(activityIndex: number): DiagramPanel[] {
           { type: "zone", x: 96, y: 17, width: 2, height: 70, tone: "recovery" },
           { type: "gate", x: 141, y: 40, rotate: 90 },
           { type: "gate", x: 22, y: 70, rotate: 90 },
-          { type: "player", role: "coached", x: 58, y: 53 },
+          { type: "player", role: "coached", x: 57, y: 49 },
           { type: "player", role: "coached", x: 82, y: 74 },
           { type: "player", role: "neutral", x: 123, y: 40 },
           { type: "player", role: "opposition", x: 86, y: 50 },
           { type: "player", role: "opposition", x: 104, y: 67 },
-          { type: "ball", x: 67, y: 56 },
-          { type: "arrow", d: "M70 55 C84 48, 104 42, 120 40", action: "ball" },
-          { type: "arrow", d: "M104 67 C101 59, 99 51, 97 43", action: "pressure" }
+          { type: "ball", x: 65, y: 59 },
+          { type: "arrow", d: "M71 57 C86 49, 105 43, 118 40", action: "ball" },
+          { type: "arrow", d: "M104 65 C101 58, 99 51, 97 44", action: "pressure" }
         ]
       }
     ];
@@ -346,11 +346,11 @@ function buildAttackingOverloadPanels(activityIndex: number): DiagramPanel[] {
         { type: "zone", x: 24, y: 16, width: 89, height: 72, tone: "target" },
         { type: "zone", x: 113, y: 16, width: 25, height: 72, tone: "wide" },
         { type: "gate", x: 140, y: 52, rotate: 90 },
-        { type: "player", role: "coached", x: 66, y: 53 },
+        { type: "player", role: "coached", x: 64, y: 50 },
         { type: "player", role: "coached", x: 78, y: 74 },
         { type: "player", role: "neutral", x: 119, y: 40 },
         { type: "player", role: "opposition", x: 91, y: 52 },
-        { type: "ball", x: 75, y: 56 }
+        { type: "ball", x: 73, y: 60 }
       ]
     },
     {
@@ -361,13 +361,13 @@ function buildAttackingOverloadPanels(activityIndex: number): DiagramPanel[] {
         { type: "zone", x: 24, y: 16, width: 89, height: 72, tone: "target" },
         { type: "zone", x: 113, y: 16, width: 25, height: 72, tone: "wide" },
         { type: "gate", x: 140, y: 52, rotate: 90 },
-        { type: "player", role: "coached", x: 67, y: 53 },
+        { type: "player", role: "coached", x: 65, y: 50 },
         { type: "player", role: "coached", x: 79, y: 77 },
         { type: "player", role: "neutral", x: 119, y: 40 },
         { type: "player", role: "opposition", x: 90, y: 51 },
-        { type: "ball", x: 76, y: 56 },
-        { type: "arrow", d: "M79 55 C91 48, 104 42, 116 40", action: "ball" },
-        { type: "arrow", d: "M80 77 C89 70, 99 62, 111 55", action: "run" }
+        { type: "ball", x: 74, y: 61 },
+        { type: "arrow", d: "M79 58 C91 49, 104 42, 116 40", action: "ball" },
+        { type: "arrow", d: "M82 75 C91 68, 100 61, 111 55", action: "run" }
       ]
     },
     {
@@ -380,8 +380,8 @@ function buildAttackingOverloadPanels(activityIndex: number): DiagramPanel[] {
         { type: "player", role: "coached", x: 105, y: 57 },
         { type: "player", role: "coached", x: 78, y: 76 },
         { type: "player", role: "opposition", x: 91, y: 49 },
-        { type: "ball", x: 118, y: 36 },
-        { type: "arrow", d: "M119 38 C125 43, 132 48, 139 52", action: "ball" },
+        { type: "ball", x: 125, y: 36 },
+        { type: "arrow", d: "M122 39 C128 43, 134 48, 139 52", action: "ball" },
         { type: "arrow", d: "M78 76 C88 69, 99 63, 109 58", action: "run" },
         { type: "arrow", d: "M91 49 C100 48, 108 44, 116 38", action: "pressure" },
         { type: "arrow", d: "M105 61 C85 88, 51 81, 49 55", action: "rotation", label: "Rotate wide" },
@@ -621,9 +621,9 @@ function buildActivationPanels(): DiagramPanel[] {
         { type: "gate", x: 129, y: 29 },
         { type: "gate", x: 31, y: 77 },
         { type: "gate", x: 129, y: 77 },
-        { type: "player", role: "coached", x: 62, y: 53 },
+        { type: "player", role: "coached", x: 61, y: 50 },
         { type: "player", role: "opposition", x: 91, y: 57 },
-        { type: "ball", x: 70, y: 56 }
+        { type: "ball", x: 71, y: 61 }
       ]
     },
     {
@@ -636,10 +636,10 @@ function buildActivationPanels(): DiagramPanel[] {
         { type: "gate", x: 129, y: 29 },
         { type: "gate", x: 31, y: 77 },
         { type: "gate", x: 129, y: 77 },
-        { type: "player", role: "coached", x: 64, y: 50 },
+        { type: "player", role: "coached", x: 63, y: 48 },
         { type: "player", role: "opposition", x: 103, y: 65 },
-        { type: "ball", x: 75, y: 55 },
-        { type: "arrow", d: "M79 57 C94 68, 110 75, 126 77", action: "carry" },
+        { type: "ball", x: 73, y: 58 },
+        { type: "arrow", d: "M78 59 C94 68, 110 75, 126 77", action: "carry" },
         { type: "arrow", d: "M103 65 C98 66, 92 64, 85 59", action: "pressure" }
       ]
     }
@@ -662,7 +662,7 @@ function buildReactionChasePanels(isProgression: boolean): DiagramPanel[] {
         { type: "gate", x: 129, y: 29 },
         { type: "gate", x: 31, y: 77 },
         { type: "gate", x: 129, y: 77 },
-        { type: "player", role: "neutral", x: 48, y: 52 },
+        { type: "player", role: "neutral", x: 46, y: 49 },
         { type: "player", role: "coached", x: 76, y: 52 },
         { type: "player", role: "opposition", x: 99, y: 50 },
         ...(isProgression
@@ -671,7 +671,7 @@ function buildReactionChasePanels(isProgression: boolean): DiagramPanel[] {
               { type: "player" as const, role: "opposition" as const, x: 113, y: 64 }
             ]
           : []),
-        { type: "ball", x: isProgression ? 72 : 48, y: isProgression ? 53 : 52 }
+        { type: "ball", x: isProgression ? 70 : 52, y: isProgression ? 60 : 56 }
       ]
     },
     {
@@ -696,7 +696,7 @@ function buildReactionChasePanels(isProgression: boolean): DiagramPanel[] {
         { type: "gate", x: 129, y: 29 },
         { type: "gate", x: 31, y: 77 },
         { type: "gate", x: 129, y: 77 },
-        { type: "player", role: "neutral", x: 48, y: 52 },
+        { type: "player", role: "neutral", x: 46, y: 49 },
         { type: "player", role: "coached", x: isProgression ? 89 : 78, y: isProgression ? 48 : 49 },
         { type: "player", role: "opposition", x: 101, y: 53 },
         ...(isProgression
@@ -705,10 +705,10 @@ function buildReactionChasePanels(isProgression: boolean): DiagramPanel[] {
               { type: "player" as const, role: "opposition" as const, x: 116, y: 64 }
             ]
           : []),
-        { type: "ball", x: isProgression ? 86 : 48, y: isProgression ? 49 : 52 },
-        { type: "arrow", d: "M51 52 C61 48, 70 47, 78 49", action: "ball" },
-        { type: "arrow", d: isProgression ? "M90 49 C100 40, 115 34, 128 29" : "M80 50 C95 43, 113 34, 128 29", action: "carry" },
-        { type: "arrow", d: isProgression ? "M101 53 C97 51, 94 50, 90 49" : "M101 53 C94 52, 87 51, 80 50", action: "pressure" },
+        { type: "ball", x: isProgression ? 84 : 52, y: isProgression ? 57 : 56 },
+        { type: "arrow", d: "M54 55 C62 50, 70 48, 76 49", action: "ball" },
+        { type: "arrow", d: isProgression ? "M91 50 C101 41, 115 34, 128 29" : "M81 51 C96 43, 113 34, 128 29", action: "carry" },
+        { type: "arrow", d: isProgression ? "M100 54 C96 52, 93 51, 91 50" : "M100 54 C94 53, 87 52, 81 51", action: "pressure" },
         ...(isProgression
           ? [
               { type: "arrow" as const, d: "M106 74 C113 76, 121 77, 129 77", action: "run" as const },
@@ -1178,6 +1178,9 @@ function DiagramBoard({
   size: "compact" | "large";
 }) {
   const isLarge = size === "large";
+  const zoneTokens = panel.tokens.filter((token) => token.type === "zone");
+  const arrowTokens = panel.tokens.filter((token) => token.type === "arrow");
+  const markerTokens = panel.tokens.filter((token) => token.type !== "zone" && token.type !== "arrow");
 
   return (
     <svg
@@ -1187,7 +1190,11 @@ function DiagramBoard({
       className={["h-full w-full", isLarge ? "min-h-72" : "min-h-40"].join(" ")}
     >
       <DiagramMarkers markerBaseId={markerBaseId} />
-      <FieldArea>{panel.tokens.map((token) => renderToken(token, markerBaseId))}</FieldArea>
+      <FieldArea>
+        {zoneTokens.map((token) => renderToken(token, markerBaseId))}
+        {arrowTokens.map((token) => renderToken(token, markerBaseId))}
+        {markerTokens.map((token) => renderToken(token, markerBaseId))}
+      </FieldArea>
     </svg>
   );
 }
@@ -1362,6 +1369,7 @@ function FinalGameGridVisual() {
       <DiagramMarkers markerBaseId="club-vivo-final-card" />
       <FieldArea>
         <rect x="24" y="18" width="112" height="69" rx="5" fill="#dcfce7" fillOpacity="0.5" stroke="#22c55e" strokeDasharray="4 3" />
+        <ArrowPath d="M83 58 C94 48, 111 36, 128 29" action="carry" markerBaseId="club-vivo-final-card" />
         <ConeGate x={31} y={29} />
         <ConeGate x={129} y={29} />
         <ConeGate x={31} y={77} />
@@ -1372,8 +1380,7 @@ function FinalGameGridVisual() {
         <PlayerToken role="opposition" x={101} y={39} />
         <PlayerToken role="opposition" x={101} y={66} />
         <PlayerToken role="opposition" x={86} y={53} />
-        <BallToken x={78} y={53} />
-        <ArrowPath d="M80 53 C92 45, 109 35, 128 29" action="carry" markerBaseId="club-vivo-final-card" />
+        <BallToken x={83} y={58} />
       </FieldArea>
     </svg>
   );
