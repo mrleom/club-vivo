@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useActionState } from "react";
-import { useFormStatus } from "react-dom";
 
 import { ActivityOutput } from "../../../../components/coach/ActivityOutput";
 import type { GeneratedSession, SessionPack } from "../../../../lib/session-builder-api";
@@ -11,37 +9,14 @@ import {
   buildQuickSessionTitle
 } from "../../../../lib/quick-session-intent";
 
-type SaveFormState = {
-  error?: string;
-};
-
-type SaveAction = (state: SaveFormState, formData: FormData) => Promise<SaveFormState>;
-type SaveFormDispatch = (formData: FormData) => void;
-
-function SaveButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button
-      type="submit"
-      className="inline-flex rounded-full border border-transparent bg-teal-700 px-4 py-2 text-sm font-medium text-white transition hover:bg-teal-800 disabled:cursor-not-allowed disabled:opacity-60"
-      disabled={pending}
-    >
-      {pending ? "Saving..." : "Save session"}
-    </button>
-  );
-}
-
 function QuickReviewCandidateCard({
   candidate,
   prompt,
-  editHref,
-  saveFormAction
+  editHref
 }: {
   candidate: GeneratedSession;
   prompt: string;
   editHref: string;
-  saveFormAction: SaveFormDispatch;
 }) {
   const quickSessionTitle = buildQuickSessionTitle({
     prompt,
@@ -69,24 +44,21 @@ function QuickReviewCandidateCard({
               {candidate.durationMin} minutes
             </span>
             <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600">
-              {candidate.activities.length} activities
+              {candidate.activities.length} {candidate.activities.length === 1 ? "activity" : "activities"}
             </span>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-2 sm:shrink-0">
+        <div className="flex flex-col gap-2 sm:shrink-0 sm:items-end">
           <Link
             href={editHref}
             className="inline-flex rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-white"
           >
-            Edit
+            Revise prompt
           </Link>
-          <form action={saveFormAction}>
-            <input type="hidden" name="candidate" value={JSON.stringify(candidate)} />
-            <input type="hidden" name="origin" value="quick_session" />
-            <input type="hidden" name="quickSessionTitle" value={quickSessionTitle} />
-            <SaveButton />
-          </form>
+          <p className="max-w-56 text-right text-xs leading-5 text-slate-500">
+            Use this activity today, or revise the prompt to generate another version.
+          </p>
         </div>
       </div>
 
@@ -109,15 +81,12 @@ function QuickReviewCandidateCard({
 export function QuickSessionReview({
   pack,
   prompt,
-  editHref,
-  saveAction
+  editHref
 }: {
   pack: SessionPack;
   prompt: string;
   editHref: string;
-  saveAction: SaveAction;
 }) {
-  const [saveState, saveFormAction] = useActionState(saveAction, {});
   const quickCandidate = pack.sessions[0];
 
   if (!quickCandidate) {
@@ -133,19 +102,12 @@ export function QuickSessionReview({
 
   return (
     <div className="mt-8 grid gap-6">
-      {saveState.error ? (
-        <p className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-          {saveState.error}
-        </p>
-      ) : null}
-
       <section className="grid gap-5">
         <QuickReviewCandidateCard
           key={`${pack.packId}-0`}
           candidate={quickCandidate}
           prompt={prompt}
           editHref={editHref}
-          saveFormAction={saveFormAction}
         />
       </section>
     </div>

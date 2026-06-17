@@ -9,7 +9,7 @@ type ObjectiveConstraintsInputsProps = {
 function getEquipmentDescription(value: string) {
   switch (value.toLowerCase()) {
     case "essentials / builder choice":
-      return "Let the builder use your saved equipment profile and suggest the best setup.";
+      return "Use your saved equipment list for this session.";
     case "balls":
       return "Keep the session built around ball work and repetitions.";
     case "tall cones":
@@ -27,8 +27,12 @@ function getEquipmentDescription(value: string) {
     case "pinnies":
       return "Split teams or create overloads and transitions.";
     default:
-      return "Use this item when it matters for today's session set-up.";
+      return "Use this item when it matters for today's setup.";
   }
+}
+
+function getEquipmentDisplayLabel(value: string) {
+  return value.toLowerCase() === "essentials / builder choice" ? "Use my equipment list" : value;
 }
 
 export function ObjectiveConstraintsInputs({
@@ -72,7 +76,7 @@ export function ObjectiveConstraintsInputs({
           <div>
             <h3 className="text-base font-semibold text-slate-900">Equipment</h3>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              Choose Essentials / Builder choice, or select specific equipment for this session.
+              Use your saved equipment list, or choose the specific items available today.
             </p>
           </div>
         </div>
@@ -88,7 +92,7 @@ export function ObjectiveConstraintsInputs({
                 onClick={() => removeEquipment(item)}
                 className="inline-flex items-center gap-2 rounded-full border border-teal-200 bg-teal-50 px-3 py-1 text-xs font-medium text-teal-900 transition hover:border-teal-300 hover:bg-teal-100"
               >
-                <span>{item}</span>
+                <span>{getEquipmentDisplayLabel(item)}</span>
                 <span aria-hidden="true">x</span>
               </button>
             ))}
@@ -114,7 +118,7 @@ export function ObjectiveConstraintsInputs({
                 ].join(" ")}
                 aria-pressed={selected}
               >
-                <span className="block text-sm font-medium">{option}</span>
+                <span className="block text-sm font-medium">{getEquipmentDisplayLabel(option)}</span>
                 <span className="mt-1 block text-xs leading-5 text-slate-500">
                   {getEquipmentDescription(option)}
                 </span>

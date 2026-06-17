@@ -566,8 +566,7 @@ export function NewSessionFlow({
 
           {workspaceMode === "quick_drill" ? (
             <p className="max-w-sm rounded-2xl border border-teal-200 bg-teal-50 px-4 py-3 text-sm text-teal-800">
-              Drill / Activity uses the shared generation path. It is a focused planning frame,
-              not a separate backend mode.
+              Use this when you want a shorter activity idea instead of a full practice plan.
             </p>
           ) : null}
         </div>

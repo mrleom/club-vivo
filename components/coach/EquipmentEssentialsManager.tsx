@@ -144,8 +144,7 @@ export function EquipmentEssentialsManager({
     <div className="grid gap-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-6 text-slate-600">
-          Essentials in this slice stay in this browser for now, so coaches can shape useful
-          session-building context without claiming backend persistence yet.
+          These items are saved in this browser and used to shape your session plans.
         </p>
 
         <button
@@ -168,7 +167,7 @@ export function EquipmentEssentialsManager({
           <div>
             <h2 className="text-lg font-semibold text-slate-900">Add equipment</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Add extra essentials that matter for how you plan and prompt sessions.
+              Add anything your team often has on hand for practice.
             </p>
           </div>
 
@@ -213,8 +212,10 @@ export function EquipmentEssentialsManager({
 
       <section className="club-vivo-shell rounded-[2rem] border p-6 backdrop-blur">
         <p className="max-w-2xl text-sm leading-6 text-slate-600">
-          Start from the standard kit most coaches reach for, then add or rename the extras your
-          team uses most often.
+          Start from a practical coaching kit, then add or rename the items your team uses most.
+        </p>
+        <p className="mt-2 text-xs leading-5 text-slate-500">
+          Select an item to rename it.
         </p>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -225,7 +226,7 @@ export function EquipmentEssentialsManager({
                 className="rounded-2xl border border-slate-200 bg-white/90 px-4 py-4"
               >
                 <label className="grid gap-2 text-sm text-slate-700">
-                  <span className="font-medium">Edit equipment</span>
+                  <span className="font-medium">Rename item</span>
                   <input
                     type="text"
                     value={editDraft}

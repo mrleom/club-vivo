@@ -149,10 +149,10 @@ export function MethodologyWorkspace({
       <section className="club-vivo-shell rounded-[2rem] border p-6 backdrop-blur">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Scope</h2>
+            <h2 className="text-lg font-semibold text-slate-900">Program view</h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
-              Switch between the shared methodology direction and the scope-specific travel or OST
-              notes that coaches can reference in the workspace.
+              Choose the coaching context you want to review: shared club guidance, travel teams,
+              or OST programs.
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export function MethodologyWorkspace({
 
       {!isAdmin ? (
         <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-          Read-only mode: coach-admin users can save drafts and publish methodology for this tenant.
+          Read-only: club admins can update these notes. Coaches can use them as planning guidance.
         </p>
       ) : null}
 
@@ -219,8 +219,8 @@ export function MethodologyWorkspace({
             ) : (
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 {isAdmin
-                  ? "No methodology record exists for this scope yet. Add the first draft below."
-                  : "No methodology record exists for this scope yet. Coaches can read it here once an admin creates one."}
+                  ? "No notes have been added yet. Add the first draft below."
+                  : "No notes have been added yet. Once a club admin adds them, coaches can read them here."}
               </p>
             )}
           </div>
@@ -271,7 +271,7 @@ export function MethodologyWorkspace({
               rows={18}
               placeholder={
                 isAdmin
-                  ? "Capture the coaching direction, principles, and language that should guide this scope."
+                  ? "Capture the coaching principles, language, and priorities that should guide this program."
                   : "No methodology content saved yet."
               }
               className="min-h-[24rem] rounded-[1.5rem] border border-slate-300 bg-white px-4 py-4 outline-none transition focus:border-teal-700 disabled:cursor-not-allowed disabled:opacity-80 read-only:bg-slate-50"
@@ -281,8 +281,8 @@ export function MethodologyWorkspace({
           {isEmpty ? (
             <div className="rounded-3xl border border-dashed border-slate-300 bg-white/60 p-6 text-sm leading-6 text-slate-600">
               {isAdmin
-                ? "This scope is ready for its first text-only draft. Saving will create the methodology record in draft status."
-                : "This scope has not been created yet, so there is nothing to read right now."}
+                ? "This program view is ready for its first text-only draft. Saving will create the first set of notes."
+                : "This program view does not have notes yet."}
             </div>
           ) : null}
         </div>

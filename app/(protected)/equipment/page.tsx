@@ -42,7 +42,7 @@ export default async function EquipmentPage() {
     <div className="grid gap-6">
       <CoachPageHeader
         title="Equipment Essentials"
-        description="Start with the standard equipment most coaches need, then add any extra items you want available in your planning context."
+        description="Choose the equipment your team usually has available so session plans match the field setup."
       />
 
       <EquipmentEssentialsManager

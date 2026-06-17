@@ -110,7 +110,7 @@ export default async function MethodologyPage() {
     <div className="grid gap-6">
       <CoachPageHeader
         title="Club Methodology"
-        description="This is the Club Vivo methodology and source summary area. Individual coaches can read the SIC brain summary and the personal or club source context currently shaping generation. Club admins and delegated admin coaches can maintain club methodology when that capability is available. Future source modes should support the SIC knowledge bank, club methodology only, or SIC plus club methodology. SIC bank knowledge can improve session generation, but it is not exposed to clubs or coaches as raw content."
+        description="Review the coaching principles, session language, and program notes that guide Club Vivo planning."
       />
 
       <MethodologyWorkspace

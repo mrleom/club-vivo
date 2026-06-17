@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import { ACCESS_COOKIE } from "./auth";
 import { buildApiUrl } from "./api";
+import { tryBuildGoldenTemplatePack } from "./golden-templates";
 
 export type SessionListItem = {
   sessionId: string;
@@ -971,6 +972,11 @@ export async function getSession(sessionId: string) {
 export async function generateSessionPack(input: GenerateSessionPackInput) {
   const originalEquipment = input.equipment || [];
   const intendedInput = sanitizeGenerateSessionPackInput(input);
+  const goldenPack = tryBuildGoldenTemplatePack(intendedInput);
+
+  if (goldenPack) {
+    return goldenPack;
+  }
 
   if (process.env.NODE_ENV !== "production") {
     console.info("Session Builder generation request", buildSafeDebugObject(intendedInput));
