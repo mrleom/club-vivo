@@ -269,8 +269,8 @@ export function SessionBuilderTopBlock({
           <div>
             <h3 className="text-base font-semibold text-slate-900">Build mode</h3>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              Custom Build: coach-led planning for a full session or focused drill/activity when
-              you already know the focus.
+              Session Builder helps you create a full practice plan or a shorter activity idea
+              when you already know the focus.
             </p>
           </div>
           <ModeSelector value={mode} onChange={onModeChange} />
@@ -307,7 +307,7 @@ export function SessionBuilderTopBlock({
                   />
                   <span className="text-sm font-semibold text-slate-900">Team</span>
                   <span className="text-xs leading-5 text-slate-600">
-                    Use a saved team name, age band, and team context.
+                    Use a saved team name, age band, program type, and player count.
                   </span>
                 </label>
 
@@ -353,7 +353,7 @@ export function SessionBuilderTopBlock({
                   ))}
                 </select>
                 <span className="text-xs leading-5 text-slate-500">
-                  Choose the age band for this standalone planning group.
+                  Choose the age band for the group you are planning for today.
                 </span>
               </label>
             )}
@@ -374,7 +374,7 @@ export function SessionBuilderTopBlock({
           <div>
             <h3 className="text-base font-semibold text-slate-900">Session focus</h3>
             <p className="mt-1 text-sm leading-6 text-slate-600">
-              Choose a primary objective and focus, or choose Custom and write your own
+              Choose the required session objective and focus, or choose Custom and write your own
               soccer-specific idea below.
             </p>
           </div>
@@ -387,7 +387,7 @@ export function SessionBuilderTopBlock({
                 onChange={(event) => updateObjective({ primary: event.target.value, focus: "" })}
                 className="rounded-2xl border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-teal-700"
               >
-                <option value="">Select primary objective</option>
+                <option value="">Select required objective</option>
                 {PRIMARY_OBJECTIVE_OPTIONS.map((option) => (
                   <option key={option} value={option}>
                     {option}
