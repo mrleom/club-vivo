@@ -205,6 +205,9 @@ function TeamFormFields({
           <option value="ost">OST</option>
           <option value="travel">Travel</option>
         </select>
+        <span className="text-xs font-normal leading-5 text-slate-500">
+          Use Travel for competitive teams or OST for after-school / out-of-school-time groups.
+        </span>
       </label>
 
       <label className="grid gap-2 text-sm font-medium text-slate-700">
@@ -386,8 +389,8 @@ export default async function TeamsPage({
         title="Teams"
         description={
           isAdmin
-            ? "Tenant teams appear on the left. Create a new team or open an existing one to edit the core coach context."
-            : "Your teams appear on the left. Create a team quickly here, then come back any time to edit the core coach context."
+            ? "Review club teams and keep the age band, program type, and player count current so Session Builder can plan from the right group context."
+            : "Create or update your team context so Session Builder can shape plans for the right age, program, and group size."
         }
       />
 
@@ -414,19 +417,19 @@ export default async function TeamsPage({
           <div className="mb-4 flex items-center justify-between gap-4">
             <div>
               <h2 className="text-xl font-semibold text-slate-900">
-                {isAdmin ? "Tenant teams" : "Your teams"}
+                {isAdmin ? "Club teams" : "Your teams"}
               </h2>
               <p className="mt-1 text-sm text-slate-600">
                 {isAdmin
-                  ? "All tenant teams returned by the backend."
-                  : "Only teams you created are shown here."}
+                  ? "Teams available in this Club Vivo workspace."
+                  : "Teams you can use when building sessions."}
               </p>
             </div>
           </div>
 
           {teams.length === 0 ? (
             <div className="club-vivo-shell rounded-3xl border p-6 text-sm text-slate-600 backdrop-blur">
-              No teams yet. Create your first team on the right.
+              No teams yet. Create your first team to give Session Builder better planning context.
             </div>
           ) : (
             <div className="grid gap-4">
@@ -446,7 +449,7 @@ export default async function TeamsPage({
           <section className="club-vivo-shell rounded-3xl border p-5 backdrop-blur">
             <h2 className="text-lg font-semibold text-slate-900">Create team</h2>
             <p className="mt-2 text-sm leading-6 text-slate-600">
-              Add the core team context coaches use most: name, age band, program type, and player
+              Add the team details that most affect planning: age band, program type, and player
               count.
             </p>
 
