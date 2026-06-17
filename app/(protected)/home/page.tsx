@@ -1,6 +1,8 @@
 import Link from "next/link";
 
 import { CoachPageHeader } from "../../../components/coach/CoachPageHeader";
+import { HomeSessionStartCard } from "../../../components/coach/HomeSessionStartCard";
+import { createQuickSessionAction } from "../sessions/quick-session-actions";
 
 const WORKSPACE_AREAS = [
   {
@@ -47,6 +49,8 @@ export default async function HomePage() {
         title="Coach Workspace"
         description="A practical planning space for coaches who need sessions, team context, equipment context, and a clear record of what worked."
       />
+
+      <HomeSessionStartCard createQuickSessionAction={createQuickSessionAction} />
 
       <section className="rounded-3xl border border-slate-200 bg-white/75 p-6 shadow-sm">
         <div className="max-w-3xl">
