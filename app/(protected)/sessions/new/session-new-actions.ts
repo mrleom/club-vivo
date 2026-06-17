@@ -442,7 +442,7 @@ export async function generateSessionPackAction(
   if (workGroupMode === "team" && (!teamName || !teamAgeBand)) {
     return {
       values,
-      error: "Choose a saved team or switch Work group to Age band before generating."
+      error: "Choose a saved team, or build from an age band for now."
     };
   }
 
@@ -456,7 +456,7 @@ export async function generateSessionPackAction(
   if (!sport || !safeAgeBand || !durationMin || !theme) {
     return {
       values,
-      error: "Complete the required fields before generating a session pack."
+      error: "Complete the required fields before generating a session."
     };
   }
 
