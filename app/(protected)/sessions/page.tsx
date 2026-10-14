@@ -61,7 +61,7 @@ export default async function SessionsPage() {
       <CoachPageHeader
         title="Saved sessions"
         description={
-          "Open saved sessions, review the key details, and start a new coach-ready plan through Session Builder."
+          "Open saved sessions, review the key details, and start a new coach-ready plan through TIE."
         }
         actions={
           <Link
