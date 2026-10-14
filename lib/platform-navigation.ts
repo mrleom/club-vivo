@@ -17,14 +17,14 @@ export function getPlatformNavigation(role: string) {
   return [
     { href: "/home", label: "Home" },
     { href: "/applications", label: "Applications" },
-    ...(canUseTie(role) ? [{ href: "/tie", label: "TIE · Coaching" }] : []),
+    ...(canUseTie(role) ? [{ href: "/tie", label: "TIE" }] : []),
     ...(isAdminLikeRole(role) ? [{ href: "/organization", label: "Organization" }] : [])
   ];
 }
 export const COACHING_NAVIGATION = [
-  { href: "/sessions/new", label: "Session Builder" },
-  { href: "/tie#quick-soccer-game", label: "Quick Soccer Game" },
-  { href: "/sessions", label: "Saved Sessions" },
+  { href: "/sessions/new", label: "Plan training" },
+  { href: "/tie#quick-soccer-game", label: "Quick game" },
+  { href: "/sessions", label: "Training library" },
   { href: "/teams", label: "Teams" },
   { href: "/equipment", label: "Equipment" },
   { href: "/methodology", label: "Methodology" }
