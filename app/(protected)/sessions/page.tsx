@@ -68,7 +68,7 @@ export default async function SessionsPage() {
             href="/sessions/new"
             className="inline-flex rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-white"
           >
-            New Session Builder
+            Plan new training
           </Link>
         }
       />
