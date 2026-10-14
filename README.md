@@ -1,10 +1,12 @@
 # Club Vivo
 
-Club Vivo is a web app for nonprofit sports organizations.
+Club Vivo is one modular Sports and Business Intelligence platform for sports organizations, including clubs, academies, schools, and nonprofits.
+
+TIE is its first flagship app: the existing coaching workspace and soccer session planning tools. Club Vivo Home brings that work into a shared organization workspace with role-aware navigation and an applications hub.
 
 It starts with a simple idea: coaches should spend less time fighting blank pages and more time helping players learn, move, compete, and enjoy the game.
 
-The first product surface is a soccer session builder that helps coaches create practical training sessions from team context, time, space, equipment, and objective.
+The first available application, TIE, includes a soccer session builder that helps coaches create practical training sessions from team context, time, space, equipment, and objective.
 
 ## What it does
 
@@ -25,7 +27,9 @@ This repo currently contains the Club Vivo web app.
 
 Current product surfaces include:
 
-- Coach Workspace
+- Club Vivo Home, organization context, and role-aware navigation
+- Applications hub with explicit coming-soon modules
+- TIE Coach Workspace
 - Session Builder
 - Quick Soccer Game
 - Saved Sessions
@@ -51,7 +55,7 @@ The public repo shows the web app. Private backend values stay outside the repo.
 
 ## Club Vivo Web App Architecture
 
-Club Vivo is the coach-facing Next.js app. Coaches enter through the landing page, sign in through Cognito, land on the Home page, and work inside the Coach Workspace.
+Club Vivo is the shared Next.js product. Users sign in through Cognito and enter Club Vivo Home. Coaches open TIE to work in the existing Coach Workspace; admin-like roles also see the organization overview. Sports and business modules grow inside this product.
 
 The main product wedge is Session Builder. It turns coach input into a generation request and returns a coach-ready session that can be saved, exported, and improved with feedback.
 
@@ -59,9 +63,9 @@ The main product wedge is Session Builder. It turns coach input into a generatio
 
 ## Club Vivo and SIC
 
-Club Vivo is the coach-facing web app.
+Club Vivo is the user-facing platform, with TIE as its first application.
 
-Sports Intelligence Cloud, SIC, is the tenant-safe SaaS platform behind it.
+Sports Intelligence Cloud, SIC, is the tenant-safe technical foundation behind it. It supplies the existing auth, API, storage, and entitlement contracts.
 
 Club Vivo stays simple on the surface, while SIC handles authentication, protected API access, tenant context, data boundaries, exports, observability, and infrastructure.
 
@@ -100,4 +104,12 @@ Developers can use `.env.example` as a blank local template when needed. Amplify
 ```bash
 npm ci
 npm run dev
+
+npm test
+npm run typecheck
+npm run build
 ```
+
+## Home v1 scope
+
+See [Club Vivo Home v1](docs/product/club-vivo-home-v1.md) for routes, role presentation, Constitution grounding, and verification. Organization profiles, staff management, financial reporting, broader sports analytics, and Security & Edge are coming soon. TIE preserves the existing soccer workflows and backend contracts. No sample organization metrics or new backend permissions are introduced.

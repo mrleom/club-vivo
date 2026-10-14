@@ -1,92 +1,40 @@
 import Link from "next/link";
-
-import { CoachPageHeader } from "../../../components/coach/CoachPageHeader";
-import { HomeSessionStartCard } from "../../../components/coach/HomeSessionStartCard";
-import { createQuickSessionAction } from "../sessions/quick-session-actions";
-
-const WORKSPACE_AREAS = [
-  {
-    title: "Session Builder",
-    icon: "📋",
-    href: "/sessions/new",
-    description:
-      "Build coach-ready full sessions or focused activity ideas through Custom Build. Use Full Session for a complete practice plan or Drill / Activity for a shorter coaching idea."
-  },
-  {
-    title: "Methodology",
-    icon: "📜",
-    href: "/methodology",
-    description:
-      "Review the soccer logic behind the builder today and the direction for a clearer coach methodology over time."
-  },
-  {
-    title: "Teams",
-    icon: "👥",
-    href: "/teams",
-    description:
-      "Save team context like age band, program type, and player count so the builder starts from a better coaching picture."
-  },
-  {
-    title: "Equipment",
-    icon: "⚽",
-    href: "/equipment",
-    description:
-      "Define the equipment profile the builder can use when it shapes activities, constraints, and scoring options."
-  },
-  {
-    title: "Sessions",
-    icon: "📚",
-    href: "/sessions",
-    description:
-      "Review saved sessions, reuse ideas, and leave feedback that can support future learning-loop interpretation."
-  }
-];
+import { ApplicationsHub } from "../../../components/platform/ApplicationsHub";
+import { OrganizationOverview } from "../../../components/platform/OrganizationOverview";
+import { getPlatformUser } from "../../../lib/get-platform-user";
+import { canUseTie } from "../../../lib/platform-navigation";
 
 export default async function HomePage() {
+  const user = await getPlatformUser();
   return (
-    <div className="grid gap-6">
-      <CoachPageHeader
-        title="Coach Workspace"
-        description="A practical planning space for coaches who need sessions, team context, equipment context, and a clear record of what worked."
-      />
-
-      <HomeSessionStartCard createQuickSessionAction={createQuickSessionAction} />
-
-      <section className="rounded-3xl border border-slate-200 bg-white/75 p-6 shadow-sm">
-        <div className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-teal-800">
-            Why it exists
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-            Make the next practice easier to plan and easier to coach.
-          </h2>
-          <p className="mt-4 text-sm leading-6 text-slate-700">
-            Coach Workspace brings the day-to-day coaching tools into one place: session
-            generation, methodology notes, team context, equipment context, saved sessions, and
-            feedback. The goal is not to replace a coach&apos;s judgment. It is to give coaches a
-            cleaner starting point and keep useful context close to the planning work.
-          </p>
+    <div className="grid gap-7">
+      <section className="relative overflow-hidden rounded-[2rem] bg-teal-950 px-6 py-9 text-white sm:px-9 sm:py-12">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-24 h-80 w-80 rounded-full border-[40px] border-teal-900" />
+        <div className="relative max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-teal-200">Club Vivo Home · v1</p>
+          <h1 className="mt-4 text-3xl font-semibold leading-tight tracking-tight sm:text-5xl">Help your people develop.<br />Help your organization thrive.</h1>
+          <p className="mt-5 max-w-xl text-base leading-7 text-teal-100">One home for Sports and Business Intelligence. Start with practical coaching tools in TIE, and grow into the capabilities your organization needs.</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            {canUseTie(user.role) ? <Link href="/tie" prefetch={false} className="platform-link rounded-full bg-amber-300 px-5 py-3 text-sm font-bold text-teal-950 hover:bg-amber-200">Open TIE →</Link> : null}
+            <Link href="/applications" prefetch={false} className="platform-link rounded-full border border-teal-600 px-5 py-3 text-sm font-semibold text-white hover:bg-teal-900">Explore applications</Link>
+          </div>
         </div>
       </section>
-
-      <section className="grid gap-4 lg:grid-cols-2">
-        {WORKSPACE_AREAS.map((area) => (
-          <Link
-            key={area.title}
-            href={area.href}
-            aria-label={`Open ${area.title}`}
-            className="group rounded-3xl border border-slate-200 bg-white/75 p-5 shadow-sm transition hover:border-teal-300 hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
-          >
-            <h3 className="flex items-center gap-2 text-base font-semibold text-slate-900">
-              <span aria-hidden="true" className="text-lg leading-none">
-                {area.icon}
-              </span>
-              <span>{area.title}</span>
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-slate-600">{area.description}</p>
-          </Link>
-        ))}
-      </section>
+      <OrganizationOverview user={user} />
+      {canUseTie(user.role) ? (
+        <section aria-labelledby="continue-heading" className="rounded-3xl border border-amber-200 bg-amber-50/80 p-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-teal-800">TIE · Your first flagship app</p>
+          <h2 id="continue-heading" className="mt-2 text-xl font-semibold text-slate-900">Make your next practice count</h2>
+          <p className="mt-2 text-sm leading-6 text-slate-600">Build from your team, time, space, equipment, and coaching objective. Your judgment leads the plan.</p>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/sessions/new" prefetch={false} className="platform-link rounded-full bg-teal-700 px-4 py-2.5 text-sm font-semibold text-white hover:bg-teal-800">Build a session</Link>
+            <Link href="/tie#quick-soccer-game" prefetch={false} className="platform-link rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700">Quick Soccer Game</Link>
+            <Link href="/sessions" prefetch={false} className="platform-link rounded-full border border-slate-300 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700">Saved Sessions</Link>
+          </div>
+        </section>
+      ) : <p className="rounded-3xl border border-slate-200 bg-white/80 p-6 text-sm leading-6 text-slate-600">TIE currently supports coaches and club admins. Applications for other roles are coming soon. Contact your organization admin if your assigned role needs updating.</p>}
+      <ApplicationsHub role={user.role} />
+      <p className="px-1 text-sm leading-6 text-slate-600">Built for different sports, organizations, and development philosophies. TIE&apos;s current planning workflows focus on soccer.</p>
     </div>
   );
 }

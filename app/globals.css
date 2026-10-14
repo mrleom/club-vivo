@@ -39,3 +39,12 @@ body {
   background: var(--accent-soft);
   color: var(--accent);
 }
+
+.platform-link:focus-visible {
+  outline: 3px solid #0d9488;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platform-link { transition: none; }
+}
