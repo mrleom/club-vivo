@@ -1,59 +1,38 @@
-# Club Vivo on SIC Mermaid Diagram
+# Club Vivo on SIC
 
-## Purpose
-
-This diagram shows how the public Club Vivo web app connects to Sports Intelligence Cloud, SIC.
+Club Vivo is one modular Sports and Business Intelligence product. TIE is the first flagship application; SIC is its protected technical foundation.
 
 ```mermaid
 flowchart TD
-  Coach["Coach / coach-admin"]
-
-  subgraph ClubVivo["Club Vivo web app"]
-    Web["Next.js app"]
-    Proxy["Protected route check<br/>proxy.ts"]
-    Shell["Coach Workspace shell"]
-    Product["Session Builder / Teams / Equipment / Methodology / Saved Sessions"]
-    ApiHelpers["Server-only API helpers<br/>lib/api.ts + feature API helpers"]
-    Cookies["HttpOnly auth cookies<br/>sic_access_token"]
+  User["Signed-in member"]
+  subgraph Product["Club Vivo"]
+    Home["Home and organization context"]
+    Hub["Applications hub"]
+    TIE["TIE coaching workspace"]
+    Planned["Sports and business modules: coming soon"]
+    Helpers["Existing server-only API helpers"]
   end
-
-  subgraph Connection["Connection boundary"]
-    Env["Private environment config<br/>CLUB_VIVO_API_URL + Cognito config"]
-    Bearer["Authorization: Bearer token"]
+  subgraph Foundation["SIC technical foundation"]
+    Auth["Cognito and HttpOnly cookies"]
+    Me["Verified identity and entitlements"]
+    API["JWT-protected domain APIs"]
+    Data["Tenant-scoped DynamoDB and S3"]
   end
-
-  subgraph SIC["Sports Intelligence Cloud SaaS platform"]
-    Cognito["Amazon Cognito<br/>Hosted UI + JWTs"]
-    ApiGateway["API Gateway HTTP API<br/>JWT authorizer"]
-    Lambda["Lambda route handlers<br/>platform wrapper"]
-    Tenant["Tenant context + entitlements<br/>no client-supplied tenant_id"]
-    Domains["Domain APIs<br/>/me /teams /session-packs /sessions"]
-    Data["Tenant-scoped data<br/>DynamoDB + S3"]
-    Ops["CloudWatch + CDK"]
-  end
-
-  Coach --> Web
-  Web --> Proxy
-  Proxy --> Shell
-  Shell --> Product
-  Product --> ApiHelpers
-  ApiHelpers --> Cookies
-  ApiHelpers --> Env
-  ApiHelpers --> Bearer
-  Bearer --> ApiGateway
-  Web --> Cognito
-  Cognito --> Cookies
-  ApiGateway --> Lambda
-  Lambda --> Tenant
-  Tenant --> Domains
-  Domains --> Data
-  Lambda --> Ops
+  User --> Auth
+  Auth --> Me
+  Me --> Home
+  Me --> Hub
+  Home --> Hub
+  Hub --> TIE
+  Hub -.-> Planned
+  TIE --> Helpers
+  Helpers --> API
+  API --> Me
+  API --> Data
 ```
 
-## Reading the diagram
+The existing Session Builder, Quick Soccer Game, Teams, Equipment Essentials, Methodology, saved sessions, feedback, and exports remain inside TIE with unchanged URLs and backend contracts. Planned modules have no launch action.
 
-Club Vivo owns the coach experience: the web app, workspace, product screens, forms, and frontend helpers.
+Role-aware presentation uses the existing authenticated `/me` response. SIC remains the authority for tenant scope, action permissions, and storage boundaries. The application catalog does not grant entitlements or add a separate auth path.
 
-SIC owns the protected SaaS backend behavior: authentication, API entry, Lambda route handling, tenant context, tenant-safe data access, exports, and operations.
-
-The connection happens through Cognito login, HttpOnly cookies, private environment configuration, and bearer-token API calls.
+Private environment configuration and server-side bearer-token API calls remain the integration boundary. Existing architecture PNGs depict the earlier coaching baseline; this diagram shows Home v1's product framing.

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Club Vivo",
-  description: "Week 12 frontend scaffold for the first coach-facing SIC web surface."
+  description: "Club Vivo brings Sports and Business Intelligence together, starting with TIE's practical coaching workflows."
 };
 
 export default function RootLayout({

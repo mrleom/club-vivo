@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "node --test tests/home.test.cjs",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "latest",

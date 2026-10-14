@@ -8,7 +8,7 @@ export default function Home() {
           <div className="grid grid-cols-[1.25rem_1fr_1.25rem] border-b-4 border-slate-900 bg-emerald-700">
             <div className="border-r-4 border-slate-900 bg-rose-500" />
             <div className="px-5 py-3 text-center text-sm font-black uppercase text-white">
-              Coach planning starts here
+              Sports &amp; Business Intelligence
             </div>
             <div className="border-l-4 border-slate-900 bg-amber-300" />
           </div>
@@ -21,13 +21,13 @@ export default function Home() {
               <div className="mt-5 h-3 w-44 rounded-full border-2 border-slate-900 bg-[repeating-linear-gradient(90deg,#0f172a_0_16px,#f59e0b_16px_32px,#ef4444_32px_48px,#14b8a6_48px_64px)]" />
 
               <p className="mt-7 max-w-2xl text-lg font-semibold leading-8 text-slate-800">
-                A coach workspace for building clear, game-like sessions with the team,
-                equipment, and practice constraints you have today.
+                One home for your sports organization. Start with TIE to build clear, game-like
+                sessions, and grow into connected sports and business tools.
               </p>
             </div>
 
             <article className="rounded-3xl border-4 border-slate-900 bg-amber-50 p-5 shadow-[6px_6px_0_#0f172a]">
-              <h2 className="text-2xl font-black text-slate-950">Coach Workspace</h2>
+              <h2 className="text-2xl font-black text-slate-950">TIE · Coach Workspace</h2>
               <p className="mt-3 text-sm leading-6 text-slate-700">
                 Build full sessions or focused activity ideas, save what works, and keep your team
                 context close to the plan.
