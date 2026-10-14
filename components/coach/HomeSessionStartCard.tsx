@@ -46,7 +46,7 @@ export function HomeSessionStartCard({
           <h2 className="text-xl font-semibold text-slate-900">Quick Soccer Game</h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
             Add one practical coaching note or game idea for a focused 20-minute soccer activity
-            by default. Use Session Builder when you want the full Custom Build setup for a
+            by default. Open Plan training inside TIE when you want the full setup for a
             longer plan.
           </p>
         </div>
