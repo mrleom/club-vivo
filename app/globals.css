@@ -48,3 +48,114 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .platform-link { transition: none; }
 }
+
+/* Club Vivo workspace design language, inspired by the SALT dashboard. */
+.cv-panel {
+  min-width: 0;
+  border: 1px solid #253249;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #131e30, #101929);
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+}
+.cv-metric {
+  min-width: 0;
+  padding: 22px 20px;
+  border: 1px solid #253249;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #162236, #101a2b);
+}
+.cv-metric-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .13em;
+  color: #a6b5cc;
+}
+.cv-metric strong {
+  display: block;
+  margin: 15px 0 7px;
+  font-size: clamp(22px, 2.3vw, 30px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  overflow-wrap: anywhere;
+}
+.cv-metric p {
+  font-size: 11px;
+  color: #a3b0c7;
+}
+.cv-feature {
+  background: radial-gradient(ellipse at 90% 75%, #1e3851, transparent 65%), linear-gradient(120deg,#18283e,#121b30);
+}
+.cv-action-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #253249;
+  color: #b6c5da;
+}
+.cv-action-row:hover { color: #6ae4e0; }
+.cv-action-row > span:nth-child(2) { flex: 1; }
+.cv-action-row strong { display: block; font-size: 13px; font-weight: 650; color: #edf4fa; }
+.cv-action-row small { display: block; margin-top: 5px; font-size: 11px; line-height: 1.6; color: #92a3be; }
+.cv-action-dot { height: 8px; width: 8px; margin-top: 6px; flex-shrink: 0; border-radius: 50%; }
+.cv-orbit {
+  position: absolute;
+  pointer-events: none;
+  right: 1%;
+  bottom: 16px;
+  display: grid;
+  place-items: center;
+  height: 225px;
+  width: 225px;
+  opacity: .87;
+}
+.cv-orbit-ring {
+  position: absolute;
+  width: 175px; height: 175px;
+  border: 1px solid rgba(106,228,224,.42);
+  border-radius: 50%;
+  transform: rotateX(55deg) rotate(-28deg);
+}
+.cv-orbit-ring-second {
+  width: 200px; height: 200px;
+  border-color: rgba(183,163,255,.4);
+  transform: rotateY(55deg) rotate(28deg);
+}
+.cv-orbit-core {
+  display: grid;
+  place-items: center;
+  height: 92px; width: 92px;
+  border: 1px solid #58899c;
+  border-radius: 26px;
+  background: linear-gradient(140deg,#366978,#242c59);
+  color: #a1f0ef;
+  font-size: 26px;
+  font-weight: 900;
+  box-shadow: 0 0 50px rgba(81,213,214,.16);
+  transform: rotate(-9deg);
+}
+.cv-orbit-node {
+  position: absolute;
+  top: 28px;
+  right: 54px;
+  width: 8px; height: 8px;
+  border-radius: 3px;
+  background: #b7a3ff;
+  box-shadow: 0 0 15px #b7a3ff80;
+}
+.cv-dark-landing {
+  color: #e9edf7;
+  background: radial-gradient(ellipse at 90% 15%,#182d45 0%,transparent 45%),#080d19;
+}
+.cv-dark-landing a:focus-visible, .cv-app a:focus-visible,
+.cv-app button:focus-visible {
+  outline: 3px solid #6ae4e0;
+  outline-offset: 4px;
+}
+@media (max-width: 740px) {
+  .cv-orbit { opacity: .18; right: -60px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv-app *, .cv-dark-landing * { scroll-behavior: auto; }
+}
