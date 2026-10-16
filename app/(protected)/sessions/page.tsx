@@ -61,14 +61,14 @@ export default async function SessionsPage() {
       <CoachPageHeader
         title="Saved sessions"
         description={
-          "Open saved sessions, review the key details, and start a new coach-ready plan through Session Builder."
+          "Open saved sessions, review the key details, and start a new coach-ready plan through TIE."
         }
         actions={
           <Link
             href="/sessions/new"
             className="inline-flex rounded-full border border-slate-300 bg-white/70 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-white"
           >
-            New Session Builder
+            Plan new training
           </Link>
         }
       />

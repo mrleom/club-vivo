@@ -113,3 +113,15 @@ npm run build
 ## Home v1 scope
 
 See [Club Vivo Home v1](docs/product/club-vivo-home-v1.md) for routes, role presentation, Constitution grounding, and verification. Organization profiles, staff management, financial reporting, broader sports analytics, and Security & Edge are coming soon. TIE preserves the existing soccer workflows and backend contracts. No sample organization metrics or new backend permissions are introduced.
+
+## Project documentation
+
+Our current authoritative **working reference** is the [Club Vivo Documentation Home](docs/README.md).
+
+- [Master Blueprint](docs/product/club-vivo-master-blueprint.md): mission, modular Sports and Business Intelligence vision, product scope and roadmap.
+- [System Architecture](docs/architecture/club-vivo-system-architecture.md): current Next.js/AWS boundaries, trusted tenant flow, future modular architecture and release gates.
+- [TIE Product Specification](docs/product/tie-product-spec-v0.md): methodology-flexible evidence-to-training intelligence, current source capability and practical prototype.
+- [Documentation Working Agreement](docs/governance/documentation-standard.md): required records for feature development, decisions, testing and safety.
+- [Platform and Amplify Hosting Decision](docs/decisions/ADR-0001-one-platform-amplify.md): accepted direction and unresolved deployment verification.
+
+**Status:** the new Club Vivo Home and SALT-inspired redesign remain in unmerged draft feature branches. These documents do not imply deployment, live multi-sport intelligence or completed Business Intelligence modules.
