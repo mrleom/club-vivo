@@ -16,6 +16,8 @@ The documentation must answer: What are we building? Why? What actually works to
 | Document | Purpose | Type |
 | --- | --- | --- |
 | [Master Blueprint](product/club-vivo-master-blueprint.md) | Mission, audiences, application model, product boundaries, roadmap | Product direction |
+| [Execution Plan](EXECUTION-PLAN.md) | Ordered milestones, work queue, release criteria, and GitHub operating model | Execution plan |
+| [Access & Pricing Principles](product/access-and-pricing-principles-v0.md) | Free essentials, paid intelligence, cost controls, data/consent boundaries | Proposed commercial policy |
 | [System Architecture](architecture/club-vivo-system-architecture.md) | Current request flow, hosting, authentication, tenancy, components and gaps | Verified-source architecture + pending validation |
 | [TIE Product Specification](product/tie-product-spec-v0.md) | Training Intelligence Engine vision, current capabilities, prototype stages and acceptance tests | Existing + proposed |
 | [Documentation Working Agreement](governance/documentation-standard.md) | Required records for each feature, how to cite code, review, test and update documentation | Process |
